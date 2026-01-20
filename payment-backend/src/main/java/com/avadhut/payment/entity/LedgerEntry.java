@@ -1,4 +1,4 @@
-package entity;
+package com.avadhut.payment.entity;
 
 import jakarta.persistence.*;
 

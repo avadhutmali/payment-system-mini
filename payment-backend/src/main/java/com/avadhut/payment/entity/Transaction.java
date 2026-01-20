@@ -1,6 +1,6 @@
-package entity;
+package com.avadhut.payment.entity;
 
-import entity.enums.AccountStatus;
+import com.avadhut.payment.entity.enums.AccountStatus;
 import jakarta.persistence.*;
 import lombok.Data;
 

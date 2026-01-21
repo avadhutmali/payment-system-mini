@@ -1,6 +1,7 @@
 package com.avadhut.payment.entity;
 
 import com.avadhut.payment.entity.enums.AccountStatus;
+import com.avadhut.payment.entity.enums.TransactionStatus;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -31,7 +32,7 @@ public class Transaction {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private AccountStatus status;
+    private TransactionStatus status;
 
     @Column(nullable = false)
     private Long amount;

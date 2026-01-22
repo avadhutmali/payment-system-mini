@@ -4,6 +4,7 @@ import com.avadhut.payment.entity.Account;
 import com.avadhut.payment.entity.Transaction;
 import com.avadhut.payment.entity.enums.TransactionStatus;
 import com.avadhut.payment.repository.AccountRepository;
+import com.avadhut.payment.repository.LedgerEntryRepository;
 import com.avadhut.payment.repository.TransactionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,7 @@ import java.util.UUID;
 public class PaymentService {
     private final AccountRepository accountRepository;
     private final TransactionRepository transactionRepository;
+    private final LedgerService ledgerService;
 
     public Transaction makePayment(
             UUID payerId,
@@ -44,6 +46,11 @@ public class PaymentService {
             throw new Exception("Insufficient Balance");
         }
 
+        //ledger entries
+        ledgerService.recordDebit(payerId,transaction.getId(),amount);
+        ledgerService.recordCredit(payeeId,transaction.getId(),amount);
+
+        //balance updating
         payer.setBalance(payer.getBalance()-amount);
         payee.setBalance(payee.getBalance()+amount);
 

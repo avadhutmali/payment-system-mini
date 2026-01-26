@@ -37,8 +37,9 @@ public class PaymentService {
         transaction.setPayerAccountId(payerId);
         transaction.setIdempotencyKey(idempotencyKey);
         transaction.setStatus(TransactionStatus.INITIATED);
-
         transactionRepository.save(transaction);
+
+        System.out.println("till here");
 
         if(payer.getBalance() < amount){
             transaction.setStatus(TransactionStatus.FAILED);

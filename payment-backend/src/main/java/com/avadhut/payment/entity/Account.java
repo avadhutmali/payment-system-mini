@@ -3,13 +3,14 @@ package com.avadhut.payment.entity;
 import com.avadhut.payment.entity.enums.AccountStatus;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.Instant;
 import java.util.UUID;
 
 @Entity
 @Table(name = "accounts")
-@Data
+@NoArgsConstructor
 public class Account {
     @Id
     @GeneratedValue
@@ -42,4 +43,38 @@ public class Account {
         this.updatedAt = Instant.now();
     }
 
+    public void setBalance(long balance) {
+        this.balance = balance;
+    }
+
+    public void setUserId(UUID userId) {
+        this.userId = userId;
+    }
+
+    public void setStatus(AccountStatus status) {
+        this.status = status;
+    }
+    public UUID getId() {
+        return id;
+    }
+
+    public UUID getUserId() {
+        return userId;
+    }
+
+    public long getBalance() {
+        return balance;
+    }
+
+    public AccountStatus getStatus() {
+        return status;
+    }
+
+    public Instant getCreatedAt() {
+        return createdAt;
+    }
+
+    public Instant getUpdatedAt() {
+        return updatedAt;
+    }
 }

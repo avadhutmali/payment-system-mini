@@ -25,7 +25,7 @@ public class AccountService {
         }
 
         Account account = new Account();
-        account.setId(userId);
+        account.setUserId(userId);
         account.setBalance(0L);
         account.setStatus(AccountStatus.ACTIVE);
 
